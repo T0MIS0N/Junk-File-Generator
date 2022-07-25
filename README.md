@@ -1,2 +1,2 @@
 # Junk-File-Generator
-This project aims to be a web app utilizing a small tech stack and its purpose is to create files with random data which can then be used for testing or overwriting deleted data on storage devices.
+This project uses React and javascript to generate BMP Images with random pixels. These images can be used to overwrite a device's free space on the harddrive to make file recovery a harder task.
