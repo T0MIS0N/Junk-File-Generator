@@ -4,24 +4,15 @@ import { render } from '@testing-library/react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-        <input id="height"></input>
-        <input id="width"></input>
-        <button id="btn" onClick={() => generate()}>Generate</button>
-      </header>
+    <div>
+    <h1>Random File Generator</h1>
+      <div className='grid'>
+        <div className='text1'><h3>Height</h3></div>
+        <div className='text-box1'><input id="height"></input></div>
+        <div className='text2'><h3>Width</h3></div>
+        <div className='text-box2'><input id="width"></input></div>
+        <div className='generate-button'><button id="btn" onClick={() => generate()}>Generate</button></div>
+      </div>
     </div>
   );
 }
@@ -31,15 +22,11 @@ function generate() {
   var randomImage = URL.createObjectURL(CreateFile(document.getElementById("width").value, document.getElementById("height").value))
   console.log("image generated! URL: " + randomImage)
   render(
-    <div className="App">
-      <header className="App-header">
-        <div className='App-Image'>
-          <img src={randomImage} height='200' alt="randomImage" />
-        </div>
-        <div>
-          <a download="random image.bmp" href={randomImage} id="link">Download</a>
-        </div>
-      </header>
+    <div className="App" id='image-div'>
+      <div className='image-grid'>
+        <div className='App-Image'><img src={randomImage} height='200' alt="randomImage" /></div>
+        <div><a className='link-button' download="random image.bmp" href={randomImage} id="link">Download</a></div>
+      </div>
     </div>
   )
 }
