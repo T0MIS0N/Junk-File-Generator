@@ -1,17 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 import { render } from '@testing-library/react';
+import ReactDOM from 'react-dom/client'
+
+var root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App() {
   return (
-    <div>
-    <h1>Random File Generator</h1>
+    <div id='root'>
+      <h1>Random File Generator</h1>
       <div className='grid'>
         <div className='text1'><h3>Height</h3></div>
         <div className='text-box1'><input id="height"></input></div>
         <div className='text2'><h3>Width</h3></div>
         <div className='text-box2'><input id="width"></input></div>
-        <div className='generate-button'><button id="btn" onClick={() => generate()}>Generate</button></div>
+        <div className='generate-button'><button id="btn" onClick={() => root.render(generate())}>Generate</button></div>
       </div>
     </div>
   );
@@ -21,8 +24,16 @@ function generate() {
   console.log(document.getElementById("width").value + " " + document.getElementById("height").value)
   var randomImage = URL.createObjectURL(CreateFile(document.getElementById("width").value, document.getElementById("height").value))
   console.log("image generated! URL: " + randomImage)
-  render(
-    <div className="App" id='image-div'>
+  return (
+    <div id='root'>
+      <h1>Random File Generator</h1>
+      <div className='grid'>
+        <div className='text1'><h3>Height</h3></div>
+        <div className='text-box1'><input id="height"></input></div>
+        <div className='text2'><h3>Width</h3></div>
+        <div className='text-box2'><input id="width"></input></div>
+        <div className='generate-button'><button id="btn" onClick={() => root.render(generate())}>Generate</button></div>
+      </div>
       <div className='image-grid'>
         <div className='App-Image'><img src={randomImage} height='200' alt="randomImage" /></div>
         <div><a className='link-button' download="random image.bmp" href={randomImage} id="link">Download</a></div>
